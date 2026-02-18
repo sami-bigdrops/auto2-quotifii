@@ -85,13 +85,14 @@ const Hero = () => {
     const utmId = getCookie('utm_id') || ''
     const utmS1 = getCookie('utm_s1') || ''
 
-    const baseUrl = 'https://autoquotes.quotifii.com'
     const params = new URLSearchParams()
-    if (utmSource) params.set('subid', utmSource)
-    if (utmId) params.set('subid2', utmId)
-    if (utmS1) params.set('c1', utmS1)
+    params.set('tid', utmId)
+    params.set('uid', utmId)
+    params.set('sid', utmSource)
+    params.set('sub1', utmS1)
+    params.set('zip', zipCode)
 
-    const redirectUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl
+    const redirectUrl = `https://autoquotes.quotifii.com/?${params.toString()}`
 
     track('zip_submission', { state, zip_code: zipCode })
     
