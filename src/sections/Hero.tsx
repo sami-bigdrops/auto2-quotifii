@@ -85,20 +85,13 @@ const Hero = () => {
     const utmId = getCookie('utm_id') || ''
     const utmS1 = getCookie('utm_s1') || ''
 
-    // Build the redirect URL
-    const baseUrl = 'https://auto.quotifii.com'
-    const params = new URLSearchParams({
-      zip_code: zipCode,
-      referrer: 'autoquotes.quotifii.com',
-      tid: '3108'
-    })
-
-    // Map UTM parameters to affiliate tracking parameters
+    const baseUrl = 'https://autoquote.quotifii.com'
+    const params = new URLSearchParams()
     if (utmSource) params.set('subid', utmSource)
     if (utmId) params.set('subid2', utmId)
     if (utmS1) params.set('c1', utmS1)
 
-    const redirectUrl = `${baseUrl}/form?${params.toString()}`
+    const redirectUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl
 
     track('zip_submission', { state, zip_code: zipCode })
     
