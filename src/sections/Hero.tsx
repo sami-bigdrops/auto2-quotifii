@@ -85,7 +85,7 @@ const Hero = () => {
     const utmId = getCookie('utm_id') || ''
     const utmS1 = getCookie('utm_s1') || ''
 
-    const baseUrl = 'https://autoquote.quotifii.com'
+    const baseUrl = 'https://autoquotes.quotifii.com'
     const params = new URLSearchParams()
     if (utmSource) params.set('subid', utmSource)
     if (utmId) params.set('subid2', utmId)
